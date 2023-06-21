@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://i.imgur.com/MZ3iJ8R.png" alt="Microsoft Active Directory Logo"/>
+<a href="https://imgur.com/eULrHiA"><img src="https://i.imgur.com/eULrHiA.png" title="source: imgur.com" /></a>
 </p>
 
 <h1>Building Intuition for DNS(Azure)</h1>
