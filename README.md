@@ -89,7 +89,7 @@ In addition, if you try to browse https://search.mydomain.com it will give an er
 **Root Hints**
 
 What are Root Hints? Root hints are DNS data stored in a DNS server. The root hints provide a list of preliminary resource records that can be used by the DNS service to locate other DNS servers that are authoritative for the root of the DNS domain namespace tree. 
-Simply put: from the tutorial, Client-1 relies on the records stored in DC-1 to resolve all name queries. The records that exist in DC-1 for this tutorial are inadequate to resolve all domain queries. However, when you search for a random address such as www.Twitter.com, it is able to use Root Hits to figure out the domain.
+Simply put: from the tutorial, Client-1 relies on the records stored in DC-1 to resolve all name queries. The records that exist in DC-1 for this tutorial are inadequate to resolve all domain queries. However, when you search for a random address such as www.Twitter.com, it is able to use Root Hints to figure out the domain.
 
 <a href="https://imgur.com/jSZVxL9"><img src="https://i.imgur.com/jSZVxL9.png" title="source: imgur.com" /></a>
 
