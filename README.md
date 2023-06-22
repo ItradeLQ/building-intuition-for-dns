@@ -16,190 +16,75 @@ In this tutorial we will observe A-Record, CNAME Record and Local DNS Cache.<br 
 
 - Windows 10 (21H2)
 
-<h2>Prerequisites</h2>
+<h2>List of Prerequisites</h2>
 
-- Antive Directory Installed
+- Active Directory Installed
 - Client and Domain Controller Connected
 
+<a href="https://imgur.com/t80i1HB"><img src="https://i.imgur.com/t80i1HB.png" title="source: imgur.com" /></a>
+
+The Domain Name System (DNS) is the phonebook of the Internet. DNS allows us to enter human-friendly domain names and be routed to websites such as Google's Public DNS  [https://dns.google/] with an IP address of [8.8.8.8]. We don't have to memorize alphanumeric IP addresses to visit this website thanks to DNS.
+
 <h2>Actions and Observations</h2>
+**A-Record Exercise**
+
+![vivaldi_te0ncrjmC3](https://user-images.githubusercontent.com/109401839/213228476-10566ab6-eff5-467e-a836-76b21cc14b09.png)
+
+1. **Connect/log into DC-1 as your domain admin account (mydomain.com\jane_admin)**
+2. **Connect/log into Client-1 as an admin (mydomain\jane_admin)**
+3. **From Client-1 try to ping “mainframe” notice that it fails**
+4. **Nslookup “mainframe” notice that it fails (no DNS record)**
+5. **Create a DNS A-record on DC-1 for “mainframe” and have it point to DC-1’s Private IP address
 
 
-Login to DC-1 as your domain admin account (mydomain.com\kanza_admin)
+![2023-01-18 10 12 45 coursecareers com ef528124c90b](https://user-images.githubusercontent.com/109401839/213230206-6f8bb790-3ed4-4a81-b431-d84fd177b8b1.jpg)
 
 
-Login to Client-1 as an admin (mydomain\kanza_admin)
+> DNS Manager via Server Manager
+> Forward Lookup
+>Mydomain
+>manualltyy create A record with ip of dc**
+6. **Go back to Client-1 and try to ping it. Observe that it works**
 
-</p>
-<br />
-<p>
-<img src="https://i.imgur.com/v9lG0Iv.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-From Client-1 try to ping “mainframe” notice that it fails, you can also Nslookup “mainframe” and it will also fails (no DNS record)
+![vivaldi_aRBUA6joTQ](https://user-images.githubusercontent.com/109401839/213231056-fb8de6ee-e1ca-4eba-8097-25dcf4268f60.png)
 
-</p>
-<br />
+**Local DNS Cache Exercise**
 
-<p>
-<img src="https://i.imgur.com/8oZFJUB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Create a DNS A-record on DC-1 for “mainframe” and point to the DC-1’s Private IP address. 
-  
-Go to DC1>Server Manager>tools>DNS
-</p>
-<br />
+1. **Go back to DC-1 and change mainframe’s record address to 8.8.8.8**
 
-<p>
-<img src="https://i.imgur.com/cY4qr6D.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-  
-<img src="https://i.imgur.com/leYeNC9.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
->DC-1>Expand dc1>Forward lookup zone>mydomain.com>right click and create another A-Record for main frame and type DC-1 IP Address>add host>ok>done.
-  
-  
-Minimize DC1 and go back to client 1.
-</p>
-<br />
+![vivaldi_kCL8ATV9xe](https://user-images.githubusercontent.com/109401839/213231797-93173e4c-eb96-4b2b-902e-090c37d38f2f.png)
 
-<p>
-<img src="https://i.imgur.com/r7A07Gw.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-ping mainframe and Observe that it work.
-</p>
-<br />
+2. Go back to Client-1 and ping “mainframe” again. Observe that it still pings the old address because it still exist in client cache so pings old ip address. The cache needs to flush in order to show the updated ip address
 
-<p>
-<img src="https://i.imgur.com/He1bWHm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-You can also type nslookup mainframe.
-</p>
-<br />
+![vivaldi_b8guefs1IO](https://user-images.githubusercontent.com/109401839/213232169-7cbd4961-08e0-409c-acfb-bdb2c0c3904a.png)
 
-<p>
-<img src="https://i.imgur.com/JiAjvZM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Look at the DNS cache on client 1, and to do that type ip config /displaydns. 
+3. **Observe the local dns cache (ipconfig /displaydns)**
+4. **Flush the DNS cache (ipconfig /flushdns). Observe that the cache is empty**
 
-</p>
-<br />
+![vivaldi_ngpZOpAny4](https://user-images.githubusercontent.com/109401839/213232520-8c9a7a92-b407-4b4f-89b7-844e25ff2e50.png)
 
-<p>
-<img src="https://i.imgur.com/XrjEntI.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Local DNS Cache Exercise
-  
-  
-Go to DC-1 and change mainframe’s record address to 8.8.8.8
+5. **Attempt to ping “mainframe” again. Observe the address of the new record is showing up**
 
-  
-Go back to Client-1 and ping “mainframe” again. Observe that it still pings the old address. Because old ip address is still exist in the local dns cache on client 1 computer.
+![vivaldi_mM61VFUhCE](https://user-images.githubusercontent.com/109401839/213232855-48f2d665-3370-4e88-a168-801d029033c9.png)
 
-</p>
-<br />
+**CNAME Record Exercise**
 
-<p>
-<img src="https://i.imgur.com/lCVrhV7.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/Qwxjll7.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Type ipconfig /displaydns we can observe mainframe with the old ip address.
-</p>
-<br />
+![2023-01-18 10 20 47 camo githubusercontent com 352c35d7555a](https://user-images.githubusercontent.com/109401839/213233343-f7ff8421-db7d-4a62-a074-58e607ccada8.jpg)
 
-<p>
-<img src="https://i.imgur.com/m2crOE4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Now we can use the command flushdns. It will wipe out all the previous cache. 
+1. Return to DC-1 and create a CNAME record that points the host “search” to “www.google.com”**
+2. Return to Client-1 and attempt to ping “search”, observe the results of the CNAME record**
 
-</p>
-<br />
+![vivaldi_8fNzswyh0V](https://user-images.githubusercontent.com/109401839/213233611-e5ed9231-42db-4b85-95d1-3f28f166416f.png)
 
-<p>
-<img src="https://i.imgur.com/znPxbnv.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Open Command Line as an local admin and type Ipconfig /displaydns to observe the local DNS cache, then Ipconfig /flushdns , it will successfully flush the dns. Then again type Ipconfig /displaydns and observe that it’s empty.
+3. On Client-1, nslookup “search”, observe the results of the CNAME record**
 
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/69m3OTV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Ping mainframe and it will resolve to 8.8.8.8 because it didn’t have anything in the cache, so it will force the dns server. 
-
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/NdmmFv2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Ipconfig / displaydns and we can see the latest A record mainframe with 8.8.8.8.
-</p>
-<br />
+<a href="https://imgur.com/2m5vOsJ"><img src="https://i.imgur.com/2m5vOsJ.png" title="source: imgur.com" /></a>
 
 
-CNAME Record Exercise
+**Root Hints**
 
+What are Root Hints? Root hints are DNS data stored in a DNS server. The root hints provide a list of preliminary resource records that can be used by the DNS service to locate other DNS servers that are authoritative for the root of the DNS domain namespace tree.
 
-<p>
-<img src="https://i.imgur.com/VAKvNMi.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Go to Client-1 and ping search and it will fail.
-</p>
-<br />
+<a href="https://imgur.com/jSZVxL9"><img src="https://i.imgur.com/jSZVxL9.png" title="source: imgur.com" /></a>
 
-<p>
-<img src="https://i.imgur.com/My4zJvY.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-
-Go back to DC-1 and create a CNAME record that points the host “search” to www.google.com.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/rA1Ebrv.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Then on Client-1 ping search, and observe the results of the CNAME record, we can see google's ip address.
-  
-  
-Browse search.mydomain.com but it will not going to match the certificate but we still force it to resolve it to google through cname record.
-
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/iA0OCvE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Ipconfig /displaydns, Ipconfig /flushdns, Ping search, Ipconfig /displaydns
- 
-
-</p>
-<br />
-
-<p>  
-<img src="https://i.imgur.com/rA1Ebrv.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-nslookup “search”, and observe the results of the CNAME record.
-</p>
-<br />
-
-<img src="https://i.imgur.com/i8noAKR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<p>
-</p>
-<p>
-You can also observe Root Hints.
+Hope you enjoyed this turtorial.
