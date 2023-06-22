@@ -83,7 +83,7 @@ The Domain Name System (DNS) is the phonebook of the Internet. DNS allows us to 
 
 **Root Hints**
 
-What are Root Hints? Root hints are DNS data stored in a DNS server. The root hints provide a list of preliminary resource records that can be used by the DNS service to locate other DNS servers that are authoritative for the root of the DNS domain namespace tree. Simply put the omputer will use the list of Fully Qualified Domain Names to resolve names it doesn't know.
+What are Root Hints? Root hints are DNS data stored in a DNS server. The root hints provide a list of preliminary resource records that can be used by the DNS service to locate other DNS servers that are authoritative for the root of the DNS domain namespace tree. Simply put the computer will use the list of Fully Qualified Domain Names to resolve names it doesn't know.
 
 <a href="https://imgur.com/jSZVxL9"><img src="https://i.imgur.com/jSZVxL9.png" title="source: imgur.com" /></a>
 
