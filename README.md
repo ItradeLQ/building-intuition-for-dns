@@ -55,15 +55,15 @@ The Domain Name System (DNS) is the phonebook of the Internet. DNS allows us to 
 
 <a href="https://imgur.com/sBNbona"><img src="https://i.imgur.com/sBNbona.png" title="source: imgur.com" /></a>
 
-2. Go back to Client-1 and ping “mainframe” again. Observe that it still pings the old address because it still exist in client cache so pings old ip address. The cache needs to flush in order to show the updated ip address
+2. Go back to Client-1 and ping “mainframe” again. Observe that it still pings the old address because it still exists in Client-1 cache so it pings old IP address. The cache needs to flush in order to show the updated IP address
 
-<a href="https://imgur.com/MZBZ92R"><img src="https://i.imgur.com/MZBZ92R.png" title="source: imgur.com" /></a>
+![image 7](https://github.com/ItradeLQ/building-intuition-for-dns/assets/112427894/fba21707-e65b-4f27-bf38-a4ba286ac84d)
 
 3. **Observe the local dns cache (ipconfig /displaydns)**
 
 4. **Flush the DNS cache (ipconfig /flushdns). Observe that the cache is empty**
 
-<a href="https://imgur.com/JrmpB30"><img src="https://i.imgur.com/JrmpB30.png" title="source: imgur.com" /></a>
+![image 8](https://github.com/ItradeLQ/building-intuition-for-dns/assets/112427894/a83547fb-a457-4272-adc4-888c55f796d1)
 
 5. **Attempt to ping “mainframe” again. Observe the address of the new record is showing up**
 
@@ -71,7 +71,7 @@ The Domain Name System (DNS) is the phonebook of the Internet. DNS allows us to 
 
 **CNAME Record Exercise**
 
-<a href="https://imgur.com/NrIw2D8"><img src="https://i.imgur.com/NrIw2D8.png" title="source: imgur.com" /></a>
+![image 10](https://github.com/ItradeLQ/building-intuition-for-dns/assets/112427894/db20e8e7-983f-4631-a214-aedad39628f4)
 
 1. Return to DC-1 and create a CNAME record that points the host “search” to "www.google.com”
 2. Return to Client-1 and attempt to ping “search”, observe the results of the CNAME record**
