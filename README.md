@@ -67,7 +67,8 @@ The Domain Name System (DNS) is the phonebook of the Internet. DNS allows us to 
 
 5. **Attempt to ping “mainframe” again. Observe the address of the new record is showing up**
 
-<a href="https://imgur.com/ErLkQpp"><img src="https://i.imgur.com/ErLkQpp.png" title="source: imgur.com" /></a>
+![image 9](https://github.com/ItradeLQ/building-intuition-for-dns/assets/112427894/d039d119-70a3-4e28-9f31-bdf1973512b9)
+
 
 **CNAME Record Exercise**
 
