@@ -77,7 +77,7 @@ The Domain Name System (DNS) is the phonebook of the Internet. DNS allows us to 
 1. Return to DC-1 and create a CNAME record that points the host “search” to "www.google.com”
 2. Return to Client-1 and attempt to ping “search”, observe the results of the CNAME record**
 
-<a href="https://imgur.com/WeHRldq"><img src="https://i.imgur.com/WeHRldq.png" title="source: imgur.com" /></a>
+![image 11](https://github.com/ItradeLQ/building-intuition-for-dns/assets/112427894/dd3a1663-d882-49dd-a65c-1eccad7e9c2d)
 
 3. On Client-1, nslookup “search”, observe the results of the CNAME record**
 
