@@ -85,7 +85,7 @@ The Domain Name System (DNS) is the phonebook of the Internet. DNS allows us to 
 
 In addition, if you try to browse https://search.mydomain.com it will give an error because it does not match www.google.com certificate.
 
-<a href="https://imgur.com/AMOQV4D"><img src="https://i.imgur.com/AMOQV4D.png" title="source: imgur.com" /></a>
+![12 combined](https://github.com/ItradeLQ/building-intuition-for-dns/assets/112427894/1b78784a-4ed2-4610-b2ca-9fb32721f2f5)
 
 **Root Hints**
 
